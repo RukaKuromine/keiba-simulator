@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>競馬レース・シミュレーター</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🏇 競馬レース・シミュレーター</h1>
+  <p>学習用・完全無料の競馬シミュレーション</p>
+</header>
+
+<main>
+<section class="panel">
+  <div class="topline">
+    <div><strong>ゲーム内ポイント</strong><span id="points">10000</span> pt</div>
+    <button id="resetBtn" class="small">ポイントをリセット</button>
+  </div>
+
+  <div class="controls">
+    <label>券種
+      <select id="betType">
+        <option value="win">単勝</option>
+        <option value="place">複勝</option>
+        <option value="quinella">馬連</option>
+        <option value="exacta">馬単</option>
+        <option value="wide">ワイド</option>
+        <option value="trio">三連複</option>
+        <option value="trifecta">三連単</option>
+      </select>
+    </label>
+    <label>馬番号
+      <select id="horse1"></select>
+    </label>
+    <label id="horse2Wrap">2頭目
+      <select id="horse2"></select>
+    </label>
+    <label id="horse3Wrap">3頭目
+      <select id="horse3"></select>
+    </label>
+    <label>ポイント
+      <input id="stake" type="number" min="100" max="1000" step="100" value="500">
+    </label>
+    <button id="betBtn" class="primary">予想する</button>
+  </div>
+  <div id="message" class="message">馬を選んで「予想する」を押してください。</div>
+</section>
+
+<section class="panel">
+  <div class="raceHeader">
+    <h2>名古屋スタジアム 1600m</h2>
+    <button id="startBtn" class="start">レーススタート</button>
+  </div>
+  <div class="trackWrap">
+    <div class="track" id="track">
+      <div class="startLine"></div><div class="finishLine"></div>
+      <div class="distance">START　1600m　→　GOAL</div>
+      <div class="horses" id="horses"></div>
+    </div>
+  </div>
+  <div class="status" id="raceStatus">スタートを押すとレースが始まります。</div>
+</section>
+
+<section class="panel">
+  <h2>🏆 レース結果</h2>
+  <ol id="results"><li>まだレース結果はありません。</li></ol>
+  <div id="analysis"></div>
+</section>
+
+<section class="panel">
+  <h2>📚 学習メモ</h2>
+  <p>このゲームでは、馬ごとにスピード・スタミナ・加速力・安定性を設定し、乱数を加えてレース結果をシミュレーションしています。実際の競馬の結果や配当を再現するものではありません。</p>
+</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
