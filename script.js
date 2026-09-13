@@ -22,7 +22,7 @@ function buildTrack(){
   const e=document.createElement("div"); e.className="horse"; e.textContent=h.no; e.style.background=colors[i];
   const label=document.createElement("div"); label.className="laneLabel"; label.textContent=`${h.no} ${h.name}`; e.appendChild(label);
   $("horses").appendChild(e); horseEls[h.no]=e;
-  e.style.top=(6+i*11.5)+"%"; e.style.left="0%";
+  e.style.top=(6+i*12.5)+"%"; e.style.left="0%";
  });
 }
 buildTrack();
@@ -53,7 +53,7 @@ function renderPoints(){$("points").textContent=points.toLocaleString()}
 $("startBtn").onclick=()=>{
  if(running)return;
  running=true; results=[]; $("results").innerHTML="<li>レース中……</li>"; $("analysis").innerHTML="";
- horses.forEach((h,i)=>{horseEls[h.no].style.left="0%";horseEls[h.no].style.top=(6+i*11.5)+"%"});
+ horses.forEach((h,i)=>{horseEls[h.no].style.left="0%";horseEls[h.no].style.top=(6+i*12.5)+"%"});
  startTime=performance.now();
  $("raceStatus").textContent="スタート！ 各馬が走り始めました。";
  raf=requestAnimationFrame(frame);
@@ -69,7 +69,7 @@ function frame(now){
   const p=Math.min(.995, progress*(h.speed/88)*staminaFactor*accelFactor + consistency);
   const e=horseEls[h.no];
   e.style.left=(p*100)+"%";
-  e.style.top=(6+i*11.5 + Math.sin(t*8+i)*0.7)+"%";
+  e.style.top=(6+i*12.5 + Math.sin(t*8+i)*0.7)+"%";
  });
  if(progress<1){raf=requestAnimationFrame(frame)}
  else finishRace();
@@ -82,7 +82,7 @@ function finishRace(){
   return {...h,score};
  }).sort((a,b)=>b.score-a.score);
  results=ranked;
- ranked.forEach((h,i)=>{horseEls[h.no].style.left="99%";horseEls[h.no].style.top=(6+(i%8)*11.5)+"%"});
+ ranked.forEach((h,i)=>{horseEls[h.no].style.left="99%";horseEls[h.no].style.top=(6+(i%8)*12.5)+"%"});
  $("raceStatus").textContent=`ゴール！ 1着は ${ranked[0].no}番 ${ranked[0].name} です。`;
  renderResults(); settlePrediction();
 }
